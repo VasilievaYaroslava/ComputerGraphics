@@ -107,19 +107,19 @@ public class StandartGraphWindow extends JFrame
 	public void setDrawable(DrawableBufferedImage picture)
 	{
 		System.out.println("Set drawable!");
-		//label.paint(picture.getBufferedImage().getGraphics());
+		////label.paint(picture.getBufferedImage().getGraphics());
 		
 		BufferedImage g = new BufferedImage(300, 300, ColorSpace.TYPE_RGB);
 		
 		panel.removeAll();
-		//label = new JLabel(new ImageIcon(getClass().getResource("Close.png")));
+		////label = new JLabel(new ImageIcon(getClass().getResource("Close.png")));
 		label = new JLabel(new ImageIcon(picture.getBufferedImage()));
 		panel.add(label, BorderLayout.CENTER);
 		pack();
-		//panel.setBackground(Color.CYAN);
-		//add(panel);
-		//panel.getGraphics().drawImage(picture.getBufferedImage(), 60, 60, Graphics);
-		//panel.getGraphics().drawImage
+		////panel.setBackground(Color.CYAN);
+		////add(panel);
+		////panel.getGraphics().drawImage(picture.getBufferedImage(), 60, 60, Graphics);
+		////panel.getGraphics().drawImage
 	}
 	
 	public static void initialisationFail() 

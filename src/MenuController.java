@@ -41,18 +41,18 @@ public class MenuController
 		ControllerDrawSimpleSquare contr = new ControllerDrawSimpleSquare();
 		Dimension d = window.getSize();
 		DrawableBufferedImage image = new DrawableBufferedImage(d.width, d.height);
-		contr.getSimpleSquare(image, d.width, d.height);
+		contr.paintSimpleSquare(image, d.width, d.height);
 		window.setDrawable(image);
 		
 		window.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
             	System.out.println("Component RESIZED");
             	//drawSimpleSquare();
-            	//ControllerDrawSimpleSquare contr = new ControllerDrawSimpleSquare();
-        		//Dimension d = window.getSize();
-        		//DrawableBufferedImage image = new DrawableBufferedImage(d.width, d.height);
-        		//contr.getSimpleSquare(image, d.width, d.height);
-        		//window.setDrawable(image);
+            	ControllerDrawSimpleSquare contr = new ControllerDrawSimpleSquare();
+        		Dimension d = window.getSize();
+        		DrawableBufferedImage image = new DrawableBufferedImage(d.width, d.height);
+        		contr.paintSimpleSquare(image, d.width, d.height);
+        		window.setDrawable(image);
             }
         });
 		/*

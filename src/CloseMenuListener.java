@@ -6,14 +6,6 @@ public class CloseMenuListener implements MenuListener
 {
 	private MenuController controller;
 
-	/*
-	@Override
-	public void actionPerformed(ActionEvent e) 
-	{
-		controller.closeProgram();
-	}
-	*/
-
 	@Override
 	public void setMenuController(MenuController contr) 
 	{
@@ -21,33 +13,29 @@ public class CloseMenuListener implements MenuListener
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mouseClicked(MouseEvent e) 
+	{
 		controller.closeProgram();
-		
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void mouseEntered(MouseEvent e) 
+	{
 	}
 
 	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void mouseExited(MouseEvent e) 
+	{
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void mousePressed(MouseEvent e) 
+	{
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void mouseReleased(MouseEvent e) 
+	{
 	}
 
 }
