@@ -6,6 +6,7 @@ public class MenuController
 {
 	private StandartGraphWindow window;
 	private Loader loader;
+
 	
 	private MenuController()
 	{
@@ -21,68 +22,46 @@ public class MenuController
 		}
 	}
 	
+	/**
+	 * Start function.
+	 * 
+	 * @param args - the array of {@link String}, which are the programs arguments.
+	 */
 	public static void main (String args[])
 	{
 		MenuController controller = new MenuController();
 	}
 	
+	/**
+	 * Views text message about this program.
+	 */
 	public void aboutProgram()
 	{
 		window.viewAbout();
 	}
 	
+	/**
+	 * Closes this program.
+	 */
 	public void closeProgram()
 	{
 		System.exit(0);
 	}
 	
+	/**
+	 * Draws square on main window of this program.
+	 */
 	public void drawSimpleSquare() 
 	{
+		System.out.println("drawSimpleSquare() ");
 		ControllerDrawSimpleSquare contr = new ControllerDrawSimpleSquare();
 		Dimension d = window.getSize();
+
+		
 		DrawableBufferedImage image = new DrawableBufferedImage(d.width, d.height);
-		contr.paintSimpleSquare(image, d.width, d.height);
+		contr.paintSimpleSquare(image);
 		window.setDrawable(image);
 		
-		window.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-            	System.out.println("Component RESIZED");
-            	//drawSimpleSquare();
-            	ControllerDrawSimpleSquare contr = new ControllerDrawSimpleSquare();
-        		Dimension d = window.getSize();
-        		DrawableBufferedImage image = new DrawableBufferedImage(d.width, d.height);
-        		contr.paintSimpleSquare(image, d.width, d.height);
-        		window.setDrawable(image);
-            }
-        });
-		/*
-		window.addComponentListener(new ComponentListener() {
-			
-			@Override
-			public void componentShown(ComponentEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void componentResized(ComponentEvent arg0) {
-				System.out.println("Component RESIZED");
-				drawSimpleSquare();
-				
-			}
-			
-			@Override
-			public void componentMoved(ComponentEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void componentHidden(ComponentEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		*/
+
 	}
 }

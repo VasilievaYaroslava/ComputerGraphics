@@ -6,14 +6,6 @@ public class SimpleSquareListener implements MenuListener
 {
 	private MenuController controller;
 
-	/*
-	@Override
-	public void actionPerformed(ActionEvent arg0) 
-	{
-		controller.drawSimpleSquare();
-	}
-	*/
-
 	@Override
 	public void setMenuController(MenuController controller) 
 	{
@@ -27,27 +19,23 @@ public class SimpleSquareListener implements MenuListener
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void mouseEntered(MouseEvent arg0) 
+	{
 	}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void mouseExited(MouseEvent arg0) 
+	{
 	}
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void mousePressed(MouseEvent arg0) 
+	{
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void mouseReleased(MouseEvent arg0) 
+	{
 	}
 
 }

@@ -27,13 +27,16 @@ public class StandartGraphWindow extends JFrame
 {
 	private JToolBar toolBar;
 	private JPanel panel;
-	private JLabel label;
-	
-	/**
-	 * 
-	 */
+	private BufferedImage bufferedImage;
+
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructs a {@link StandartGraphWindow}.
+	 * 
+	 * @param title - the {@link String}, which is the name of this window.
+	 * @param menuItems - the {@link ArrayList} of first-range nested {@link InfoMenuItem}.
+	 */
 	public StandartGraphWindow(String title, ArrayList<InfoMenuItem> menuItems)
 	{
 		super(title);
@@ -43,22 +46,20 @@ public class StandartGraphWindow extends JFrame
 		setMinimumSize(size);
 		setVisible(true);
 		
-		
-		panel = new JPanel();
-		label = new JLabel();
+		panel = new JPanel() 
+			{
+				private static final long serialVersionUID = 1L;
+
+				public void paintComponent(Graphics g) 
+				{
+					g.drawImage(bufferedImage, 0, 0, null);
+				}
+			};
+
 		setLayout(new BorderLayout());
-		
 		toolBar = new JToolBar("");
 		add(toolBar, BorderLayout.BEFORE_FIRST_LINE);
-	        toolBar.setFloatable(false); // запрещаем двигать панель
-
-	        // установить ориентацию панели
-	        //toolBar.setOrientation(SwingConstants.HORIZONTAL);
-	        //toolBar.setOrientation(SwingConstants.VERTICAL);
-	        
-	        //toolBar.addSeparator();
-	        //toolBar.setBackground(Color.BLACK);
-		
+	    toolBar.setFloatable(false); 
 		JMenuBar menuBar = new JMenuBar();
 		
 		for(int i = 0; i < menuItems.size(); ++i)
@@ -67,28 +68,15 @@ public class StandartGraphWindow extends JFrame
 		}
 		
 		toolBar.setBorderPainted(true);
-		//toolBar.pai
-		menuBar.setBorderPainted(true);
-		//menuBar.set
-		//add(menuBar);
-		
+		menuBar.setBorderPainted(true);		
 		setJMenuBar(menuBar);
-		//add(toolBar);
-		
-		Canvas canvas = new Canvas();
-		
-		canvas.setBackground(Color.BLUE);
-		
-		//add(canvas);
-		
-		//panel.setIcon(new ImageIcon(getClass().getResource("AboutProgram.png")));
-		//panel.setBackground(Color.CYAN);
 		add(panel, BorderLayout.CENTER);
-		
 		pack();
 	}
 
-	 
+	/**
+	 * Views text message about this program. 
+	 */
 	public void viewAbout()
 	{
 		viewMessage("О программе", 
@@ -99,39 +87,52 @@ public class StandartGraphWindow extends JFrame
 				"Васильевой Ярославой Олеговной.");
 	}
 	
+	/**
+	 * Gets a maximal size of image, which possibly to be set to this window.
+	 * 
+	 * @return the {@link Dimension}, which contains size.
+	 */
 	public Dimension getImageSize()
 	{
-		return label.getSize();
+		return panel.getSize();
 	}
 	
+	/**
+	 * Sets picture to this window.
+	 * 
+	 * @param picture - the {@link DrawableBufferedImage}, which enables to get image for setting.
+	 */
 	public void setDrawable(DrawableBufferedImage picture)
 	{
-		System.out.println("Set drawable!");
-		////label.paint(picture.getBufferedImage().getGraphics());
-		
-		BufferedImage g = new BufferedImage(300, 300, ColorSpace.TYPE_RGB);
-		
-		panel.removeAll();
-		////label = new JLabel(new ImageIcon(getClass().getResource("Close.png")));
-		label = new JLabel(new ImageIcon(picture.getBufferedImage()));
-		panel.add(label, BorderLayout.CENTER);
-		pack();
-		////panel.setBackground(Color.CYAN);
-		////add(panel);
-		////panel.getGraphics().drawImage(picture.getBufferedImage(), 60, 60, Graphics);
-		////panel.getGraphics().drawImage
+		bufferedImage = picture.getBufferedImage();
+		repaint();
 	}
 	
+	/**
+	 * Views text message about fail of program initialisation.
+	 */
 	public static void initialisationFail() 
 	{
 		viewMessage("Ошибка", "Произошла ошибка при инициализации программы. Повреждены вспомогательные файлы приложения.");
 	}
 	
+	/**
+	 * Views text message in individual window.
+	 * 
+	 * @param title - the {@link String}, which is title of new window.
+	 * @param text - the {@link String}, which is text of message.
+	 */
 	private static void viewMessage(String title, String text)
 	{
 		JOptionPane.showMessageDialog(new JFrame(), text, title, JOptionPane.ERROR_MESSAGE);
 	}
 	
+	/**
+	 * Create button and item menu.
+	 * 
+	 * @param item - the {@link InfoMenuItem}, which contain all info about menu item.
+	 * @return {@link JMenu} - menu item, which was created.
+	 */
 	private JMenu createMenuItem(InfoMenuItem item) 
 	{
 		JMenu newItem = new JMenu(item.getName());
@@ -139,14 +140,12 @@ public class StandartGraphWindow extends JFrame
 		if (item.getChildren().isEmpty())
 		{
 			JButton button = new JButton();
-			//button.addActionListener(item.getListener());
 			button.addMouseListener(item.getListener());
 			System.out.println(item.getPicture());
 			ImageIcon image = new ImageIcon(getClass().getResource(item.getPicture()));
 			
 			button.setIcon(new ImageIcon(image.getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));;
 			toolBar.add(button);
-			//newItem.addActionListener(item.getListener());
 			newItem.addMouseListener(item.getListener());
 			
 		}
