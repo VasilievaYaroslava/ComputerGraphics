@@ -1,6 +1,7 @@
 package ru.nsu.fit.vasilieva.computer_graphics.view;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import ru.nsu.fit.vasilieva.computer_graphics.action_controllers.Drawable;
@@ -10,6 +11,8 @@ public class DrawableBufferedImage implements Drawable
 {
 	private BufferedImage image;
 	private int rgb = 0;
+	private int width;
+	private int height;
 	
 	/**
 	 * Constructs a {@link DrawableBufferedImage} of one of the {@link Drawable} types.
@@ -20,6 +23,8 @@ public class DrawableBufferedImage implements Drawable
 	 */
 	public DrawableBufferedImage(int width, int height)
 	{
+		this.width = width;
+		this.height = height;
 		image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 	}
 
@@ -44,6 +49,28 @@ public class DrawableBufferedImage implements Drawable
 	{
 		image.flush();
 		return image;
+	}
+
+	@Override
+	public void setText(String text, Color color, int x, int y) 
+	{
+		Graphics g = image.getGraphics();
+		Color c = g.getColor();
+		g.setColor(color);
+		g.drawString(text, x, y + 10);
+		g.setColor(c);
+	}
+
+	@Override
+	public int getWidth() 
+	{
+		return width;
+	}
+
+	@Override
+	public int getHeight() 
+	{
+		return height;
 	}
 	
 }

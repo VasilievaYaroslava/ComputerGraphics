@@ -8,7 +8,7 @@ public class ControllerDrawSimpleSquare implements ControllerGraphicAction
 	 * at a distance of 100 pixels in width and height 
 	 * from the upper left angle of drawing field.
 	 * 
-	 * @param picture - the {@link Drawable}, which is field for draw.
+	 * @param picture - the  {@link Drawable}, which is field for draw.
 	 */
 	public void paintSimpleSquare(Drawable picture)
 	{

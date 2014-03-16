@@ -1,4 +1,4 @@
-package ru.nsu.fit.vasilieva.computer_graphics.task1specific;
+package ru.nsu.fit.vasilieva.computer_graphics.task2specific;
 
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -11,6 +11,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JToolBar;
 
+import ru.nsu.fit.vasilieva.computer_graphics.enums.Direction;
+import ru.nsu.fit.vasilieva.computer_graphics.enums.ZoomType;
 import ru.nsu.fit.vasilieva.computer_graphics.view.AbstractBarsCreator;
 
 public class BarsCreator implements AbstractBarsCreator
@@ -42,13 +44,51 @@ public class BarsCreator implements AbstractBarsCreator
 		});
 		
 		
-		JMenu paint = new JMenu("Рисование");
-		addItem(paint, "Квадрат", "icons/SimpleSquare.png", new ActionListener() {
-			
+		JMenu moving = new JMenu("Перемещение");
+		addItem(moving, "Вверх", "icons/Up.png", new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.drawSimpleSquare();
-				
+				controller.movePosition(Direction.UP);
+			}
+		});
+		addItem(moving, "Вниз", "icons/Down.png", new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.movePosition(Direction.DOWN);
+			}
+		});
+		addItem(moving, "Влево", "icons/Left.png", new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.movePosition(Direction.LEFT);	
+			}
+		});
+		addItem(moving, "Вправо", "icons/Right.png", new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.movePosition(Direction.RIGHT);
+			}
+		});
+		
+		JMenu zoom = new JMenu("Масштаб");
+		addItem(zoom, "Увеличить", "icons/ZoomIn.png", new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.zoom(ZoomType.IN);
+			}
+		});
+		addItem(zoom, "Уменьшить", "icons/ZoomOut.png", new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.zoom(ZoomType.OUT);
+			}
+		});
+		
+		JMenu settings = new JMenu("Настройки");
+		addItem(settings, "Изменить", "icons/Settings.png", new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.changeSettings();
 			}
 		});
 		
@@ -63,7 +103,9 @@ public class BarsCreator implements AbstractBarsCreator
 		});
 		
 		menubar.add(file);
-		menubar.add(paint);
+		menubar.add(moving);
+		menubar.add(zoom);
+		menubar.add(settings);
 		menubar.add(about);
 		
 		
